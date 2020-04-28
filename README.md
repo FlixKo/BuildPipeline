@@ -30,7 +30,15 @@ Completing the project involves several steps:
 
 1. Write a Dockerfile for a simple Flask API
 2. Build and test the container locally
+2.0. docker build --tag jwt-api-test .
+2.1. docker run --env-file env_file -p 8080:8080 jwt-api-test
+2.2. curl -v http://0.0.0.0:8080
+2.3. export TOKEN=`curl -d '{"email":"test@test.de","password":"test"}' -H "Content-Type: application/json" -X POST localhost:8080/auth  | jq -r '.token'`
+2.4. curl --request GET 'http://127.0.0.1:8080/contents' -H "Authorization: Bearer ${TOKEN}" | jq .
+
 3. Create an EKS cluster
+# a1663f07dc68a297228fb3d31347ceb5a41ffd79 
+# aws ssm put-parameter --name JWT_SECRET --value "abc123abc1234" --type SecureString
 4. Store a secret using AWS Parameter Store
 5. Create a CodePipeline pipeline triggered by GitHub checkins
 6. Create a CodeBuild stage which will build, test, and deploy your code
