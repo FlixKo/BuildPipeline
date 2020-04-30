@@ -38,7 +38,7 @@ Completing the project involves several steps:
 
 3. Create an EKS cluster
 3.1 eksctl create cluster --name simple-jwt-api
-# a1663f07dc68a297228fb3d31347ceb5a41ffd79 
+#  a1663f07dc68a297228fb3d31347ceb5a41ffd79 
 # aws ssm put-parameter --name JWT_SECRET --value "abc123abc1234" --type SecureString
 4. Store a secret using AWS Parameter Store
 aws ssm put-parameter --name JWT_SECRET --value "123a43wbc" --type SecureString
